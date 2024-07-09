@@ -34,8 +34,12 @@ const App = () => {
         setIsAuthorized(false);
       }
     };
-    fetchUser();
-  }, [isAuthorized]);
+    if (isAuthorized) {
+      fetchUser();
+    } else {
+      setIsAuthorized(false); // Ensure consistent state if not authorized
+    }
+  }, [isAuthorized, setIsAuthorized, setUser]);
 
   return (
     <>
